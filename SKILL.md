@@ -20,7 +20,7 @@ agent_created: true
 ## 前置条件（首次使用前检查）
 
 1. **Godot 引擎**：Godot 4.x（推荐 4.4+，UID 相关工具需要）。需知道可执行文件路径。
-2. **Godot MCP**：任选其一并接入 WorkBuddy，见 `references/godot-mcp-setup.md`。
+2. **Godot MCP**：任选其一并接入你的 AI 编码助手（Claude Code / Codex / Cursor 等），见 `references/godot-mcp-setup.md`。
 3. **生图 API**：一个 OpenAI 兼容或 Stability 兼容的生图服务 + key，见 `references/image-gen-pipeline.md`。
 4. **Python 3**：运行 `scripts/` 下的脚本（本项目已内置，无需外部依赖）。
 
@@ -83,7 +83,7 @@ agent_created: true
 
 | 资源 | 用途 |
 |------|------|
-| `references/godot-mcp-setup.md` | 接入 Godot MCP 的多种方案与 WorkBuddy 配置 |
+| `references/godot-mcp-setup.md` | 接入 Godot MCP 的多种方案与各 AI 助手配置 |
 | `references/open-source-stack.md` | 10 个开源仓库的归类、Godot 原生等价物映射、集成顺序 |
 | `references/art-asset-guide.md` | 游戏所需美术资产清单、程序化 vs 生图覆盖矩阵、免费 CC0 素材库清单与授权速查、风格统一技巧 |
 | `references/image-gen-pipeline.md` | 生图 API 调用方式、自检循环、游戏资产 prompt 模板 |
