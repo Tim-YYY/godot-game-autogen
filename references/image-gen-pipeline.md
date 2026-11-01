@@ -11,7 +11,7 @@ GAME_IMG_API_KEY    # 你的 key
 GAME_IMG_MODEL      # 例如 gpt-image-1 / dall-e-3 / 服务商指定的模型名
 ```
 
-**方式 B：配置文件** `~/.workbuddy/game-assets/config.json`
+**方式 B：配置文件** `~/.godot-game-autogen/config.json`
 ```json
 {
   "api_base": "https://api.openai.com/v1",
@@ -68,6 +68,6 @@ python scripts/gen_image.py \
 - 同一角色多姿态：先生成基准图，再以基准图为 `--ref` 图生图，保持角色一致。
 - 生成数量较大时，把结果目录结构规划好（见 `art-asset-guide.md`），避免后期导入混乱。
 
-## 兜底：WorkBuddy 内置生图
+## 兜底：AI 助手自带生图
 
-若用户尚未提供外部 API key，可先用 WorkBuddy 内置的生图能力应急出图；等拿到 key 后切回 `gen_image.py` 走外部 API（可控性、批量、成本更优）。
+若尚未提供外部 API key，可先用你所用 AI 助手自带的生图能力应急出图；等拿到 key 后切回 `gen_image.py` 走外部 API（可控性、批量、成本更优）。
