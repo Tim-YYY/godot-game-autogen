@@ -28,8 +28,16 @@ npx -y @satelliteoflove/godot-mcp --install-addon /path/to/your/godot/project
 ```
 然后在 Godot 编辑器里 `Project Settings > Plugins` 启用 `Godot MCP`。
 
-### 2. 配置到 WorkBuddy
-WorkBuddy 的 MCP 配置文件在 **`~/.workbuddy/mcp.json`**（注意不是带点的 `.mcp.json`）。合并写入，不要覆盖已有 server：
+### 2. 配置到你的 AI 助手
+
+以下是通用 stdio 配置，写入对应工具的 MCP 配置文件（合并进已有的 `mcpServers`，不要覆盖别的 server）：
+
+| 工具 | MCP 配置方式 |
+|------|-------------|
+| Claude Code | `claude mcp add godot-mcp -- npx -y @satelliteoflove/godot-mcp`，或项目 `.mcp.json` / `~/.claude/mcp_servers.json` |
+| Codex | `codex mcp add godot-mcp -- npx -y @satelliteoflove/godot-mcp`，或 `~/.codex/config.toml` |
+| Cursor | 项目 `.cursor/mcp.json` |
+| WorkBuddy | `~/.workbuddy/mcp.json`（注意不是带点的 `.mcp.json`） |
 
 ```json
 {
@@ -70,5 +78,5 @@ WorkBuddy 的 MCP 配置文件在 **`~/.workbuddy/mcp.json`**（注意不是带�
 
 - **Windows 下务必设 `GODOT_PATH`**，否则 MCP 可能找不到 Godot 可执行文件。
 - addon 类方案要求 **Godot 编辑器保持打开**；`@coding-solo` 方案 Godot 可关闭。
-- 配置写好后**不会自动生效**，需要在 WorkBuddy 右上角连接器管理页对新增 server 点「信任」启用。
+- 配置写好后**通常需重启或重载 MCP 连接**才生效：Claude Code 用 `/mcp` 检查，Codex 用 `codex mcp list`，WorkBuddy 在连接器管理页对新增 server 点「信任」。
 - 若一个 MCP 不够用，可同时挂多个（如 `godot-mcp` + `minimal-godot-mcp`）互补。
