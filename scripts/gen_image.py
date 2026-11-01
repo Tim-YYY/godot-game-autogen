@@ -10,7 +10,7 @@ Backends (auto-detected, or forced via GAME_IMG_BACKEND env):
                      Use when a reference image is supplied.
 
 Configuration is read from environment variables first, then from
-~/.workbuddy/game-assets/config.json (JSON keys override env).
+~/.godot-game-autogen/config.json (JSON keys override env).
 
 Env vars:
   GAME_IMG_API_BASE   base URL (default https://api.openai.com/v1)
@@ -31,7 +31,7 @@ import sys
 import urllib.error
 import urllib.request
 
-CONFIG_PATH = os.path.expanduser("~/.workbuddy/game-assets/config.json")
+CONFIG_PATH = os.path.expanduser("~/.godot-game-autogen/config.json")
 
 
 def load_config():
