@@ -1,6 +1,6 @@
 # godot-game-autogen
 
-一个给 WorkBuddy 用的**全流程 AI 游戏自动开发** skill：把一句模糊的游戏创意，自动推进成一个能跑、能玩、美术风格统一的 Godot 游戏工程。
+一个**通用的 AI 全流程游戏自动开发** skill：把一句模糊的游戏创意，自动推进成一个能跑、能玩、美术风格统一的 Godot 游戏工程。不绑定特定工具，适用于任何支持 skill 的 AI 编码助手（Claude Code、Codex、Cursor、WorkBuddy 等）。
 
 ## 能力
 
@@ -14,9 +14,9 @@
 
 ```
 godot-game-autogen/
-├── SKILL.md                         # skill 入口（WorkBuddy 识别靠它）
+├── SKILL.md                         # skill 入口（AI 助手识别靠它）
 ├── references/
-│   ├── godot-mcp-setup.md           # Godot MCP 接入
+│   ├── godot-mcp-setup.md           # Godot MCP 接入（多工具配置）
 │   ├── open-source-stack.md         # 开源技术栈映射
 │   ├── art-asset-guide.md           # 美术资产需求 + 免费素材库清单
 │   └── image-gen-pipeline.md        # 生图 API + 自检循环
@@ -27,31 +27,35 @@ godot-game-autogen/
 
 ## 快速部署
 
-WorkBuddy 通过 `SKILL.md` 识别 skill，放到 skills 目录即可（装完**开新会话**才生效）。
+本仓库是**通用 skill 格式**（YAML frontmatter + `SKILL.md`），放到对应工具的 skills 目录即可（装完**开新会话**才生效）。
+
+| AI 助手 | skills 目录（Linux/macOS） | Windows |
+|---------|---------------------------|---------|
+| Claude Code | `~/.claude/skills/` | `%USERPROFILE%\.claude\skills\` |
+| Codex | `~/.codex/skills/` | `%USERPROFILE%\.codex\skills\` |
+| WorkBuddy | `~/.workbuddy/skills/` | `%USERPROFILE%\.workbuddy\skills\` |
+
+> 各工具的确切目录可能随版本变化，以官方文档为准。
 
 ### 方式一：git clone（推荐，便于后续更新）
 
 ```bash
-# macOS / Linux
-cd ~/.workbuddy/skills
-git clone https://github.com/<你的用户名>/godot-game-autogen.git
-
-# Windows (PowerShell)
-cd $env:USERPROFILE\.workbuddy\skills
-git clone https://github.com/<你的用户名>/godot-game-autogen.git
+# 以 Claude Code 为例，其余工具换成上表对应目录
+cd ~/.claude/skills
+git clone https://github.com/Tim-YYY/godot-game-autogen.git
 ```
 
 后续更新：
 
 ```bash
-cd ~/.workbuddy/skills/godot-game-autogen && git pull
+cd ~/.claude/skills/godot-game-autogen && git pull
 ```
 
 ### 方式二：下载 ZIP 手动解压
 
 1. 在 GitHub 仓库页 `Code → Download ZIP`
-2. 解压后把 `godot-game-autogen` 文件夹（含 `SKILL.md` 的那一层）整个放进 `~/.workbuddy/skills/`
-3. 注意：解压出的路径若带仓库名前缀，要**取出含 `SKILL.md` 的那层文件夹**再放进去，否则 WorkBuddy 扫不到
+2. 解压后把 `godot-game-autogen` 文件夹（含 `SKILL.md` 的那一层）整个放进对应工具的 skills 目录
+3. 注意：解压出的路径若带仓库名前缀，要**取出含 `SKILL.md` 的那层文件夹**再放进去，否则扫不到
 
 ## 前置条件
 
@@ -64,7 +68,7 @@ cd ~/.workbuddy/skills/godot-game-autogen && git pull
 
 ## 使用
 
-接入后对 WorkBuddy 说一句，例如：
+接入后对 AI 助手说一句，例如：
 
 > 帮我做一个 2D 平台跳跃小游戏
 
